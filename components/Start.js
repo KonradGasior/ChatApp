@@ -29,12 +29,14 @@ export default class Start extends Component {
       >
         <Text style={styles.appTitle}>Chat App</Text>
         <View style={styles.wrapper}>
+          {/* here user input username */}
           <TextInput
             style={styles.yourName}
             placeholder="Your Name"
             onChangeText={name => this.setState({ name })}
             value={this.state.name}
           />
+          {/* buttons responsible for updating state with backgorund color */}
           <Text>Choose Background Color</Text>
           <View style={styles.backgroundButtons}>
             <TouchableOpacity
@@ -62,6 +64,7 @@ export default class Start extends Component {
               }
             ></TouchableOpacity>
           </View>
+          {/* Button navigate to the second screen */}
           <TouchableOpacity
             style={styles.startChating}
             title="Go to Chat"
