@@ -83,7 +83,7 @@ export default class Start extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: "white",
-    width: 250,
+    width: 350,
     height: 200,
     padding: 10
   },
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   appTitle: {
-    marginBottom: 20,
+    marginBottom: 40,
     color: "#FFFFFF",
     fontSize: 45,
     fontWeight: "600"
