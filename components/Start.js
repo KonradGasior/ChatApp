@@ -7,6 +7,7 @@ import {
   ImageBackground,
   StyleSheet
 } from "react-native";
+import { GiftedChat } from "react-native-gifted-chat";
 
 // react class is showing input field where user can
 // inuput his name and navigate to the second screen
@@ -40,24 +41,32 @@ export default class Start extends Component {
           <Text>Choose Background Color</Text>
           <View style={styles.backgroundButtons}>
             <TouchableOpacity
+              accessibilityLabel="Chose black background color"
+              accessibilityRole="button"
               style={styles.background1}
               onPress={() =>
                 this.setState({ background: styles.backgroundColor1 })
               }
             ></TouchableOpacity>
             <TouchableOpacity
+              accessibilityLabel="Chose dark-brown background color"
+              accessibilityRole="button"
               style={styles.background2}
               onPress={() =>
                 this.setState({ background: styles.backgroundColor2 })
               }
             ></TouchableOpacity>
             <TouchableOpacity
+              accessibilityLabel="Chose grey background color"
+              accessibilityRole="button"
               style={styles.background3}
               onPress={() =>
                 this.setState({ background: styles.backgroundColor3 })
               }
             ></TouchableOpacity>
             <TouchableOpacity
+              accessibilityLabel="Chose light-green background color"
+              accessibilityRole="button"
               style={styles.background4}
               onPress={() =>
                 this.setState({ background: styles.backgroundColor4 })
@@ -66,6 +75,8 @@ export default class Start extends Component {
           </View>
           {/* Button navigate to the second screen */}
           <TouchableOpacity
+            accessibilityLabel="Go to chat"
+            accessibilityRole="button"
             style={styles.startChating}
             title="Go to Chat"
             onPress={() =>

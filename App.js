@@ -1,4 +1,3 @@
-import React from "react";
 // Import screens to navigate to:
 import Start from "./components/Start";
 import Chat from "./components/Chat";
