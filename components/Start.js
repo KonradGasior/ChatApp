@@ -14,7 +14,7 @@ import { GiftedChat } from "react-native-gifted-chat";
 // using button provided and the name given will be
 // the account name displayed in the top left corner:
 export default class Start extends Component {
-  state = { name: "", background: "" };
+  state = { name: "", background: "#FFFFFF" };
 
   render() {
     return (
