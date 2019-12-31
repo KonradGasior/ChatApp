@@ -7,14 +7,13 @@ import {
   ImageBackground,
   StyleSheet
 } from "react-native";
-import { GiftedChat } from "react-native-gifted-chat";
 
 // react class is showing input field where user can
 // inuput his name and navigate to the second screen
 // using button provided and the name given will be
 // the account name displayed in the top left corner:
 export default class Start extends Component {
-  state = { name: "", background: "#FFFFFF" };
+  state = { name: "", background: "#474056" };
 
   render() {
     return (
