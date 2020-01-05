@@ -29,63 +29,75 @@ export default class CustomActions extends Component {
 
   // take photos:
   takePhoto = async () => {
-    const { status } = await Permissions.askAsync(
-      Permissions.CAMERA,
-      Permissions.CAMERA_ROLL
-    );
+    try {
+      const { status } = await Permissions.askAsync(
+        Permissions.CAMERA,
+        Permissions.CAMERA_ROLL
+      );
 
-    if (status === "granted") {
-      let result = await ImagePicker.launchCameraAsync({
-        mediaTypes: "Images"
-      }).catch(error => console.log(error));
+      if (status === "granted") {
+        let result = await ImagePicker.launchCameraAsync({
+          mediaTypes: "Images"
+        }).catch(error => console.log(error));
 
-      if (!result.cancelled) {
-        const storedImage = await this.uploadImage(result.uri);
-        this.props.onSend({ image: storedImage });
+        if (!result.cancelled) {
+          const storedImage = await this.uploadImage(result.uri);
+          this.props.onSend({ image: storedImage });
+        }
       }
+    } catch (error) {
+      console.log(error);
     }
   };
 
   // browse images:
   pickImage = async () => {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+    try {
+      const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
 
-    if (status === "granted") {
-      let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: "Images"
-      }).catch(error => console.log(error));
+      if (status === "granted") {
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: "Images"
+        }).catch(error => console.log(error));
 
-      if (!result.cancelled) {
-        const storedImage = await this.uploadImage(result.uri);
-        this.props.onSend({ image: storedImage });
+        if (!result.cancelled) {
+          const storedImage = await this.uploadImage(result.uri);
+          this.props.onSend({ image: storedImage });
+        }
       }
+    } catch (error) {
+      console.log(error);
     }
   };
 
   uploadImage = async uri => {
     // Turn file into a Blob:
-    const blob = await new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.onload = function() {
-        resolve(xhr.response);
-      };
-      xhr.onerror = function(e) {
-        console.log(e);
-        reject(new TypeError("Network request failed"));
-      };
-      xhr.responseType = "blob";
-      xhr.open("GET", uri, true);
-      xhr.send(null);
-    });
+    try {
+      const blob = await new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+          resolve(xhr.response);
+        };
+        xhr.onerror = function(e) {
+          console.log(e);
+          reject(new TypeError("Network request failed"));
+        };
+        xhr.responseType = "blob";
+        xhr.open("GET", uri, true);
+        xhr.send(null);
+      });
 
-    const ref = firebase
-      .storage()
-      .ref()
-      .child("myimage");
-    const snapshot = await ref.put(blob);
-    blob.close();
+      const ref = firebase
+        .storage()
+        .ref()
+        .child("myimage");
+      const snapshot = await ref.put(blob);
+      blob.close();
 
-    return await snapshot.ref.getDownloadURL();
+      return await snapshot.ref.getDownloadURL();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   onActionPress = () => {

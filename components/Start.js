@@ -13,7 +13,10 @@ import {
 // using button provided and the name given will be
 // the account name displayed in the top left corner:
 export default class Start extends Component {
-  state = { name: "", background: "#474056" };
+  state = {
+    name: "",
+    background: styles.backgroundColor2
+  };
 
   render() {
     return (

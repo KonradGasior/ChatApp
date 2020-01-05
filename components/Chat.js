@@ -151,7 +151,7 @@ export default class Chat extends Component {
   };
 
   // handle send actions:
-  onSend(messages = []) {
+  onSend = (messages = []) => {
     this.setState(
       previousState => ({
         messages: GiftedChat.append(previousState.messages, messages)
@@ -161,32 +161,32 @@ export default class Chat extends Component {
         this.saveMessages();
       }
     );
-  }
+  };
 
   // Edit bubble apperance:
-  renderBubble(props) {
+  renderBubble = props => {
     return (
       <Bubble
         {...props}
-        wrapperStyle={{ right: { backgroundColor: "#000" } }}
+        wrapperStyle={{ right: { backgroundColor: "#fff" } }}
       />
     );
-  }
+  };
 
   // check if should render input toolbar:
-  renderInputToolbar(props) {
+  renderInputToolbar = props => {
     if (this.state.isConnected == false) {
     } else {
       return <InputToolbar {...props} />;
     }
-  }
+  };
   // Custom actions:
   renderCustomActions = props => {
     return <CustomActions {...props} />;
   };
 
   //
-  renderCustomView(props) {
+  renderCustomView = props => {
     const { currentMessage } = props;
     if (currentMessage.location) {
       return (
@@ -202,7 +202,7 @@ export default class Chat extends Component {
       );
     }
     return null;
-  }
+  };
   // Passes user name given in the start screen to the title
   static navigationOptions = ({ navigation }) => {
     return { title: navigation.state.params.name };
@@ -224,7 +224,7 @@ export default class Chat extends Component {
           renderBubble={this.renderBubble}
           renderInputToolbar={this.renderInputToolbar.bind(this)}
           messages={this.state.messages}
-          onSend={messages => this.onSend(messages)}
+          onSend={(messages = []) => this.onSend(messages)}
           user={this.state.user}
         />
         {Platform.OS === "android" ? <KeyboardSpacer /> : null}
