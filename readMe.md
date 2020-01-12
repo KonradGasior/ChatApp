@@ -1,6 +1,6 @@
 # ChatApp
 
-![ChatApp screenshot](/images/ChatApp.png)
+![ChatApp](/imges/ChatApp.png)
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
