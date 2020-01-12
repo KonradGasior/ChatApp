@@ -6,7 +6,7 @@ import {
   StyleSheet,
   AsyncStorage,
   NetInfo,
-  Image
+  YellowBox
 } from "react-native";
 import { GiftedChat, Bubble, InputToolbar } from "react-native-gifted-chat";
 import KeyboardSpacer from "react-native-keyboard-spacer";
@@ -20,6 +20,7 @@ require("firebase/firestore");
 export default class Chat extends Component {
   constructor(props) {
     super(props);
+    YellowBox.ignoreWarnings(["Setting a timer"]);
     if (!firebase.apps.length) {
       firebase.initializeApp({
         apiKey: "AIzaSyAVjHtROl84k687JTDKQ0DMzAnT-AvTwi4",
