@@ -1,6 +1,6 @@
 # ChatApp
 
-![ChatApp](/imges/ChatApp.png){ width=250px, height=250px }
+![ChatApp](/imges/ChatApp.png)
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
