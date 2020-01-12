@@ -8,7 +8,7 @@ import firebase from "firebase";
 import "firebase/firestore";
 
 export default class CustomActions extends Component {
-  // Take user location:
+  // lets user share location:
   getLocation = async () => {
     const { status } = await Permissions.askAsync(Permissions.LOCATION);
 
@@ -27,7 +27,7 @@ export default class CustomActions extends Component {
     }
   };
 
-  // take photos:
+  // let user take photos:
   takePhoto = async () => {
     try {
       const { status } = await Permissions.askAsync(
@@ -50,7 +50,7 @@ export default class CustomActions extends Component {
     }
   };
 
-  // browse images:
+  // let user browse images:
   pickImage = async () => {
     try {
       const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
@@ -70,6 +70,7 @@ export default class CustomActions extends Component {
     }
   };
 
+  // uploads image to the database:
   uploadImage = async uri => {
     // Turn file into a Blob:
     try {
@@ -100,6 +101,7 @@ export default class CustomActions extends Component {
     }
   };
 
+  // message option button:
   onActionPress = () => {
     const options = [
       "Choose Picture From Library",
