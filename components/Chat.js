@@ -216,8 +216,10 @@ export default class Chat extends Component {
 
   // check if should render input toolbar:
   /**
+   * If online shows chatbox tooltip
    * @function renderInputToolbar
    * @param {object} props
+   * @return {class}
    */
   renderInputToolbar = props => {
     if (this.state.isConnected == false) {
@@ -226,11 +228,23 @@ export default class Chat extends Component {
     }
   };
   // Custom actions:
+  /**
+   * returns button allowing user to see and send location, pictures, take pickture option
+   * @function renderCustomActions
+   * @param {object} props
+   * @returns {class}
+   */
   renderCustomActions = props => {
     return <CustomActions {...props} />;
   };
 
   // renders user location map in the bubble message
+  /**
+   * returns MapView which shows location in chat bubble, if message object hold no location value returns null
+   * @function renderCustomActions
+   * @param {object} props
+   * @returns {class | null}
+   */
   renderCustomView = props => {
     const { currentMessage } = props;
     if (currentMessage.location) {
@@ -248,10 +262,12 @@ export default class Chat extends Component {
     }
     return null;
   };
+
   // Passes user name given in the start screen to the title
   static navigationOptions = ({ navigation }) => {
     return { title: navigation.state.params.name };
   };
+
   render() {
     return (
       // Wrapping component also using the background chosen at start screen
